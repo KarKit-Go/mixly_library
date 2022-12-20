@@ -1,0 +1,15 @@
+<script type="text/javascript" src="../../blocks/company/test.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/test.js"></script>
+<category name="Test_wujinhjun" colour="120">
+	<block type="test_hello"></block>
+    <block type="Motor_init"></block>   <!--初始化驱动器-->
+	<block type="PS2X_init"></block>   <!--初始化-->
+	<block type="PS2X_Button"></block>  
+	<block type="PS2X_stk"></block> 
+	<block type="PS2X_vibrate"></block> 
+	<block type="DCMotorRun"></block>
+	<block type="DCMotorStop"></block>
+	<block type="SERVO_init"></block>
+	<block type="SERVO"></block>
+	<block type="ReadSERVO"></block>
+</category>
