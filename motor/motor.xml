@@ -1,0 +1,5 @@
+<script type="text/javascript" src="../../blocks/company/motor.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/motor.js"></script>
+<category name="KarKit-Motor" colour="120">
+    <block type="Mecanum_Car_Init"></block>
+</category>
