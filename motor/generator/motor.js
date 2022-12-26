@@ -52,3 +52,19 @@ Blockly.Arduino.Init_Go = function () {
     Blockly.Arduino.definitions_['define_Go'] = code;
     return "";
 }
+
+Blockly.Arduino.Init_Back = function () {
+    const code = "void back()\n"
+        + "{\n"
+        + "\tpwm.setPWM(wheelLeftFrontGo, 0, 0);\n"
+        + "\tpwm.setPWM(wheelLeftFrontBack, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelLeftRearGo, 0, 0);\n"
+        + "\tpwm.setPWM(wheelLeftRearBack, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelRightFrontGo, 0, 0);\n"
+        + "\tpwm.setPWM(wheelRightFrontBack, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelRightRearGO, 0, 0);\n"
+        + "\tpwm.setPWM(wheelRightRearBack, 0, maxSpeed);\n"
+        + "}"
+    Blockly.Arduino.definitions_['define_Back'] = code;
+    return "";
+}

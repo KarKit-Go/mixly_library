@@ -49,3 +49,14 @@ Blockly.Blocks.Init_Go = {
         this.setTooltip(Blockly.Init_Go_Tip);
     }
 }
+
+Blockly.Blocks.Init_Back = {
+    init: function () {
+        this.setColour(Blockly.Blocks.motor.HUE3);
+        this.appendDummyInput(Blockly.Init_Back)
+            .appendField(Blockly.Init_Back);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Init_Back_Tip);
+    }
+}
