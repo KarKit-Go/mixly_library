@@ -12,5 +12,4 @@
     </block>
     <block type="Init_Go"></block>
     <block type="Init_Back"></block>
-    <!-- <block type="LM35"></block> -->
 </category>
