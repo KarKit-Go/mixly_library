@@ -12,4 +12,6 @@
     </block>
     <block type="Init_Go"></block>
     <block type="Init_Back"></block>
+    <block type="Init_Right"></block>
+    <block type="Init_Left"></block>
 </category>
