@@ -71,3 +71,14 @@ Blockly.Blocks.Init_Right = {
         this.setTooltip(Blockly.Init_Right_Tip);
     }
 }
+
+Blockly.Blocks.Init_Left = {
+    init: function () {
+        this.setColour(Blockly.Blocks.motor.HUE3);
+        this.appendDummyInput(Blockly.Init_Left)
+            .appendField(Blockly.Init_Left);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Init_Left_Tip);
+    }
+}
