@@ -60,3 +60,14 @@ Blockly.Blocks.Init_Back = {
         this.setTooltip(Blockly.Init_Back_Tip);
     }
 }
+
+Blockly.Blocks.Init_Right = {
+    init: function () {
+        this.setColour(Blockly.Blocks.motor.HUE3);
+        this.appendDummyInput(Blockly.Init_Right)
+            .appendField(Blockly.Init_Right);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Init_Right_Tip);
+    }
+}
