@@ -3,6 +3,7 @@ goog.provide("Blockly.Blocks.motor");
 goog.require("Blockly.Blocks");
 
 Blockly.Blocks.motor.HUE3 = 140;
+Blockly.Blocks.motor.Fun = 290;
 
 Blockly.Blocks.Mecanum_Car_Init = {
     init: function () {
@@ -52,45 +53,57 @@ Blockly.Blocks.Init_SoftSerial = {
 
 Blockly.Blocks.Init_Go = {
     init: function () {
-        this.setColour(Blockly.Blocks.motor.HUE3);
+        this.setColour(Blockly.Blocks.motor.Fun);
         this.appendDummyInput(Blockly.Init_Go)
             .appendField(Blockly.Init_Go);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Init_Go_Tip);
+    },
+    getProcedureDef: function () {
+        return ["go", [], false];
     }
 }
 
 Blockly.Blocks.Init_Back = {
     init: function () {
-        this.setColour(Blockly.Blocks.motor.HUE3);
+        this.setColour(Blockly.Blocks.motor.Fun);
         this.appendDummyInput(Blockly.Init_Back)
             .appendField(Blockly.Init_Back);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Init_Back_Tip);
+    },
+    getProcedureDef: function () {
+        return ["back", [], false];
     }
 }
 
 Blockly.Blocks.Init_Right = {
     init: function () {
-        this.setColour(Blockly.Blocks.motor.HUE3);
+        this.setColour(Blockly.Blocks.motor.Fun);
         this.appendDummyInput(Blockly.Init_Right)
             .appendField(Blockly.Init_Right);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Init_Right_Tip);
+    },
+    getProcedureDef: function () {
+        return ["right", [], false];
     }
 }
 
 Blockly.Blocks.Init_Left = {
     init: function () {
-        this.setColour(Blockly.Blocks.motor.HUE3);
+        this.setColour(Blockly.Blocks.motor.Fun);
         this.appendDummyInput(Blockly.Init_Left)
             .appendField(Blockly.Init_Left);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Init_Left_Tip);
+    },
+    getProcedureDef: function () {
+        return ["left", [], false];
     }
 }
 
@@ -341,4 +354,8 @@ Blockly.Blocks.Define_Command = {
         this.setNextStatement(true);
         this.contextMenu = false;
     }
+}
+
+Blockly.Blocks.Variable = {
+
 }
