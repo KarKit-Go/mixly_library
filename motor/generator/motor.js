@@ -37,6 +37,13 @@ Blockly.Arduino.Mecanum_Car_Speed = function () {
     return '';
 }
 
+Blockly.Arduino.Init_SoftSerial = function () {
+    Blockly.Arduino.definitions_['define_SoftwareSerial'] = '#include<SoftwareSerial.h>';
+    Blockly.Arduino.definitions_['define_softSerial'] = 'SoftwareSerial softSerial(5,6);'
+
+    return '';
+}
+
 Blockly.Arduino.Init_Go = function () {
     const code = "void go()\n"
         + "{\n"
