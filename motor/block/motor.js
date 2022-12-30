@@ -162,7 +162,7 @@ Blockly.Blocks.Init_State_Machine = {
 
         this.commandCount_ = parseInt(xmlElement.getAttribute('elseif'), 10);
 
-        for (var i = 1; i < this.commandCount_; i++) {
+        for (var i = 1; i <= this.commandCount_; i++) {
             this.appendValueInput('IF' + i)
                 .setCheck([Boolean, Number])
                 .appendField("如果指令是");
