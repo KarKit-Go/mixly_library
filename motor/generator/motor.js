@@ -41,6 +41,8 @@ Blockly.Arduino.Init_SoftSerial = function () {
     Blockly.Arduino.definitions_['define_SoftwareSerial'] = '#include<SoftwareSerial.h>';
     Blockly.Arduino.definitions_['define_softSerial'] = 'SoftwareSerial softSerial(5,6);'
 
+    Blockly.Arduino.setups_['setup_softSerial'] = 'softSerial.begin(115200);\n'
+        + "\tsoftSerial.listen()";
     return '';
 }
 
@@ -106,4 +108,8 @@ Blockly.Arduino.Init_Left = function () {
         + "}"
     Blockly.Arduino.definitions_['define_Left'] = code;
     return "";
+}
+
+Blockly.Arduino.Init_State_Machine = function () {
+
 }
