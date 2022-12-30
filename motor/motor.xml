@@ -1,19 +1,28 @@
 <script type="text/javascript" src="../../blocks/company/motor.js"></script>
 <script type="text/javascript" src="../../generators/arduino/company/motor.js"></script>
 <category name="KarKit-Motor" colour="120">
-    <block type="Mecanum_Car_Init"></block>
-    <block type="Mecanum_Wheel_Init"></block>
-    <block type="Mecanum_Car_Speed">
-        <value name="Speed">
-            <shadow type="math_number">
-                <field name="NUM">100</field>
-            </shadow>
-        </value>
-    </block>
-    <block type="Init_SoftSerial"></block>
-    <block type="Init_Go"></block>
-    <block type="Init_Back"></block>
-    <block type="Init_Right"></block>
-    <block type="Init_Left"></block>
-    <block type="Init_State_Machine"></block>
+    <category id="Init" name="初始化">
+        <block type="Mecanum_Car_Init"></block>
+        <block type="Mecanum_Wheel_Init"></block>
+        <block type="Mecanum_Car_Speed">
+            <value name="Speed">
+                <shadow type="math_number">
+                    <field name="NUM">100</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="Init_SoftSerial"></block>
+        <block type="Init_Go"></block>
+        <block type="Init_Back"></block>
+        <block type="Init_Right"></block>
+        <block type="Init_Left"></block>
+        <block type="Init_State_Machine">
+            <value name="IF0">
+                <shadow type="math_number">
+                    <field name="NUM">500</field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+    <category id="Variable" name="变量"></category>
 </category>
