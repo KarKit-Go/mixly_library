@@ -102,11 +102,11 @@ Blockly.Blocks.Init_State_Machine = {
     init: function () {
         //this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
         this.setColour(Blockly.Blocks.motor.HUE3);
-        this.appendValueInput('WaitTime', Number)
+        this.appendValueInput('IF0', Number)
             .appendField("状态机等待时间")
             .setCheck(Number);
-        // this.appendStatementInput('DO0')
-        //     .appendField("执行");
+        this.appendStatementInput('DO0')
+            .appendField("默认指令");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setMutator(new Blockly.Mutator(['Define_Command']));
@@ -194,7 +194,7 @@ Blockly.Blocks.Init_State_Machine = {
         containerBlock.initSvg();
 
         var connection = containerBlock.getInput('STACK').connection;
-        for (var i = 1; i < this.commandCount_; i++) {
+        for (var i = 1; i <= this.commandCount_; i++) {
             var commandBlock = workspace.newBlock('Define_Command');
             commandBlock.initSvg();
             connection.connect(commandBlock.previousConnection);
