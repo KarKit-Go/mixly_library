@@ -146,14 +146,14 @@ Blockly.Blocks.Init_State_Machine = {
 
         for (var i = this.commandCount_; i > 0; i--) {
             if (containerBlock.getInputTargetBlock('IF' + i) && containerBlock.getInputTargetBlock('IF' + i).previousConnection) {
-                valueConnections[i] = containerBlock.getInputTargetBlock('IF' + i).previousConnection;
+                valueConnections[i] = (containerBlock.getInputTargetBlock('IF' + i).previousConnection);
             } else {
                 valueConnections[i] = null;
             }
             this.removeInput('IF' + i);
 
             if (containerBlock.getInputTargetBlock('DO' + i) && containerBlock.getInputTargetBlock('DO' + i).previousConnection) {
-                statementConnections[i] = containerBlock.getInputTargetBlock('DO' + i).previousConnection;
+                statementConnections[i] = (containerBlock.getInputTargetBlock('DO' + i).previousConnection);
             } else {
                 statementConnections[i] = null;
             }
@@ -204,12 +204,16 @@ Blockly.Blocks.Init_State_Machine = {
         return containerBlock;
     },
 
+    /**
+     * Reconfigure this block based on the mutator dialog's components.
+     * @param {!Blockly.Block} containerBlock Root block in mutator.
+     * @this Blockly.Block
+     */
     compose: function (containerBlock) {
         for (var i = this.commandCount_; i > 0; i--) {
             this.removeInput('IF' + i);
             this.removeInput('DO' + i);
         }
-
         this.commandCount_ = 0;
 
         var clauseBlock = containerBlock.getInputTargetBlock('STACK');
@@ -224,7 +228,7 @@ Blockly.Blocks.Init_State_Machine = {
                     statementConnections.push((clauseBlock.statementConnection_));
                     break;
                 default:
-                    throw TypeError(`Unknown block type: ${clauseBlock.type}`);
+                    throw TypeError('Unknown block type: ' + clauseBlock.type);
             }
 
             clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
@@ -234,6 +238,11 @@ Blockly.Blocks.Init_State_Machine = {
         this.reconnectChileBlocks_(valueConnections, statementConnections);
     },
 
+    /**
+     * Store pointers to any connected child blocks.
+     * @param {!Blockly.Block} containerBlock Root block in mutator.
+     * @this Blockly.Block
+     */
     saveConnections: function (containerBlock) {
         var clauseBlock = containerBlock.getInputTargetBlock('STACK');
         var i = 1;
@@ -248,12 +257,15 @@ Blockly.Blocks.Init_State_Machine = {
                     i++;
                     break;
                 default:
-                    throw `Unknown block type.`;
+                    throw 'Unknown block type.';
             }
             clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
         }
     },
 
+    /**
+     * Reconstructs the block with all child blocks attached.
+     */
     rebuildShape_: function () {
         var valueConnections = [null];
         var statementConnections = [null];
@@ -272,6 +284,11 @@ Blockly.Blocks.Init_State_Machine = {
         this.reconnectChileBlocks_(valueConnections, statementConnections);
     },
 
+    /**
+         * Modify this block to have the correct number of inputs.
+         * @this Blockly.Block
+         * @private
+         */
     updateShape_: function () {
         var i = 1;
         while (this.getInput('IF' + i)) {
@@ -289,8 +306,15 @@ Blockly.Blocks.Init_State_Machine = {
         }
     },
 
+    /**
+     * Reconnects child blocks.
+     * @param {!Array<?Blockly.RenderedConnection>} valueConnections List of value
+     * connectsions for if input.
+     * @param {!Array<?Blockly.RenderedConnection>} statementConnections List of
+     * statement connections for do input.
+     */
     reconnectChileBlocks_: function (valueConnections, statementConnections) {
-        for (var i = 1; i < this.commandCount_; i++) {
+        for (var i = 1; i <= this.commandCount_; i++) {
             Blockly.Mutator.reconnect(valueConnections[i], this, 'IF' + i);
             Blockly.Mutator.reconnect(statementConnections[i], this, 'DO' + i);
         }
