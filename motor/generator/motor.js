@@ -113,9 +113,9 @@ Blockly.Arduino.Init_Left = function () {
 Blockly.Arduino.Init_State_Machine = function () {
     const time = Blockly.Arduino.valueToCode(this, 'IF0', Blockly.Arduino.ORDER_ASSIGNMENT) || 500;
     const code = `if (softSerial.available() > 0)\n`
-        + "\t{\n"
+        + "{\n"
         + ""
-        + "\t}\n"
+        + "}\n"
         + "\tdelay(10);\n"
         + "\tnum = num + 1;\n"
         + `\tif (num > ${time / 10})\n`
