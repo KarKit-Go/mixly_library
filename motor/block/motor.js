@@ -60,6 +60,9 @@ Blockly.Blocks.Init_Go = {
         this.setNextStatement(true);
         this.setTooltip(Blockly.Init_Go_Tip);
     },
+    getVars: function () {
+        return ['GO']
+    },
     getProcedureDef: function () {
         return ["go", [], false];
     }
@@ -73,6 +76,9 @@ Blockly.Blocks.Init_Back = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Init_Back_Tip);
+    },
+    getVars: function () {
+        return ['BACK']
     },
     getProcedureDef: function () {
         return ["back", [], false];
@@ -88,6 +94,9 @@ Blockly.Blocks.Init_Right = {
         this.setNextStatement(true);
         this.setTooltip(Blockly.Init_Right_Tip);
     },
+    getVars: function () {
+        return ['RIGHT']
+    },
     getProcedureDef: function () {
         return ["right", [], false];
     }
@@ -101,6 +110,9 @@ Blockly.Blocks.Init_Left = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Init_Left_Tip);
+    },
+    getVars: function () {
+        return ['LEFT']
     },
     getProcedureDef: function () {
         return ["left", [], false];
