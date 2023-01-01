@@ -40,7 +40,7 @@ Blockly.Arduino.Mecanum_Car_Speed = function () {
 Blockly.Arduino.Init_SoftSerial = function () {
     Blockly.Arduino.definitions_['define_SoftwareSerial'] = '#include<SoftwareSerial.h>';
     Blockly.Arduino.definitions_['define_softSerial'] = 'SoftwareSerial softSerial(5,6);'
-
+    Blockly.Arduino.definitions_['int_items'] = 'String _items;';
     Blockly.Arduino.setups_['setup_softSerial'] = 'softSerial.begin(115200);\n'
         + "\tsoftSerial.listen()";
     return '';
@@ -57,7 +57,8 @@ Blockly.Arduino.Init_Go = function () {
         + "\tpwm.setPWM(wheelRightFrontBack, 0, 0);\n"
         + "\tpwm.setPWM(wheelRightRearGO, 0, maxSpeed);\n"
         + "\tpwm.setPWM(wheelRightRearBack, 0, 0);\n"
-        + "}"
+        + "}";
+    Blockly.Arduino.definitions_['define_GoCommand'] = '#define GO "GO"';
     Blockly.Arduino.definitions_['define_Go'] = code;
     return "";
 }
@@ -73,7 +74,8 @@ Blockly.Arduino.Init_Back = function () {
         + "\tpwm.setPWM(wheelRightFrontBack, 0, maxSpeed);\n"
         + "\tpwm.setPWM(wheelRightRearGO, 0, 0);\n"
         + "\tpwm.setPWM(wheelRightRearBack, 0, maxSpeed);\n"
-        + "}"
+        + "}";
+    Blockly.Arduino.definitions_['define_BackCommand'] = '#define BACK "BACK"';
     Blockly.Arduino.definitions_['define_Back'] = code;
     return "";
 }
@@ -89,7 +91,8 @@ Blockly.Arduino.Init_Right = function () {
         + "\tpwm.setPWM(wheelRightFrontBack, 0, maxSpeed);\n"
         + "\tpwm.setPWM(wheelRightRearGO, 0, maxSpeed);\n"
         + "\tpwm.setPWM(wheelRightRearBack, 0, 0);\n"
-        + "}"
+        + "}";
+    Blockly.Arduino.definitions_['define_RightCommand'] = '#define RIGHT "RIGHT"';
     Blockly.Arduino.definitions_['define_Right'] = code;
     return "";
 }
@@ -105,22 +108,42 @@ Blockly.Arduino.Init_Left = function () {
         + "\tpwm.setPWM(wheelRightFrontBack, 0,0);\n"
         + "\tpwm.setPWM(wheelRightRearGO, 0, 0);\n"
         + "\tpwm.setPWM(wheelRightRearBack, 0, maxSpeed);\n"
-        + "}"
+        + "}";
+    Blockly.Arduino.definitions_['define_LeftCommand'] = '#define LEFT "LEFT"';
     Blockly.Arduino.definitions_['define_Left'] = code;
     return "";
 }
 
 Blockly.Arduino.Init_State_Machine = function () {
+    Blockly.Arduino.definitions_['int_num'] = 'int _num = 0;';
     const time = Blockly.Arduino.valueToCode(this, 'IF0', Blockly.Arduino.ORDER_ASSIGNMENT) || 500;
-    const code = `if (softSerial.available() > 0)\n`
-        + "{\n"
-        + ""
-        + "}\n"
-        + "\tdelay(10);\n"
-        + "\tnum = num + 1;\n"
-        + `\tif (num > ${time / 10})\n`
+    const defaultCommand = Blockly.Arduino.statementToCode(this, 'DO0');
+    const codeAfter = `\tdelay(10);\n`
+        + `\t_num = _num + 1;\n`
+        + `\tif (_num > ${time / 10})\n`
         + `\t{\n`
-        + `\t\n`
-        + `\t}\n`;
-    return code;
+        + `\t${defaultCommand}`
+        + `\t}`;
+
+    let argument, branch;
+    let code = `if (softSerial.available() > 0)\n{\n\t_items = softSerial.readStringUntil('a');\n`;
+
+    // code += `\tif (String(_items).euqals(String(${argument})))\n`
+    //     + `\t{\n`
+    //     + `\t${branch}\n`
+    //     + `\t_num=0\n`
+    //     + `\t}\n`;
+    for (let i = 1; i <= this.commandCount_; i++) {
+        // Blockly.Arduino.definitions_[`int_num${i}`] = `int _num${i} = ${i};`;
+        argument = Blockly.Arduino.valueToCode(this, 'IF' + i, Blockly.Arduino.ORDER_ATOMIC);
+        branch = Blockly.Arduino.statementToCode(this, 'DO' + i);
+        // String(items).equals(String("GO"))
+
+        code += `\tif (String(_items).euqals(String(${argument})))\n`
+            + `\t{\n`
+            + `\t${branch}`
+            + `\t\t_num=0\n`
+            + `\t}\n`;
+    }
+    return code + codeAfter;
 }
