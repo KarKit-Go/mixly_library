@@ -355,7 +355,3 @@ Blockly.Blocks.Define_Command = {
         this.contextMenu = false;
     }
 }
-
-Blockly.Blocks.Variable = {
-
-}
