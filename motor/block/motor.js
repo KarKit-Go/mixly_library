@@ -119,6 +119,23 @@ Blockly.Blocks.Init_Left = {
     }
 }
 
+Blockly.Blocks.Init_Stop = {
+    init: function () {
+        this.setColour(Blockly.Blocks.motor.Fun);
+        this.appendDummyInput(Blockly.Init_Stop)
+            .appendField(Blockly.Init_Stop);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Init_Stop_Tip);
+    },
+    getVars: function () {
+        return ['STOP']
+    },
+    getProcedureDef: function () {
+        return ["stop", [], false];
+    }
+}
+
 Blockly.Blocks.Init_State_Machine = {
     /**
      * Block for if/elseif/else condition.
