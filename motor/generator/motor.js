@@ -114,6 +114,8 @@ Blockly.Arduino.Init_Left = function () {
     return "";
 }
 
+// TODO: stop
+
 Blockly.Arduino.Init_State_Machine = function () {
     Blockly.Arduino.definitions_['int_num'] = 'int _num = 0;';
     const time = Blockly.Arduino.valueToCode(this, 'IF0', Blockly.Arduino.ORDER_ASSIGNMENT) || 500;
@@ -127,17 +129,9 @@ Blockly.Arduino.Init_State_Machine = function () {
 
     let argument, branch;
     let code = `if (softSerial.available() > 0)\n{\n\t_items = softSerial.readStringUntil('a');\n`;
-
-    // code += `\tif (String(_items).euqals(String(${argument})))\n`
-    //     + `\t{\n`
-    //     + `\t${branch}\n`
-    //     + `\t_num=0\n`
-    //     + `\t}\n`;
     for (let i = 1; i <= this.commandCount_; i++) {
-        // Blockly.Arduino.definitions_[`int_num${i}`] = `int _num${i} = ${i};`;
         argument = Blockly.Arduino.valueToCode(this, 'IF' + i, Blockly.Arduino.ORDER_ATOMIC);
         branch = Blockly.Arduino.statementToCode(this, 'DO' + i);
-        // String(items).equals(String("GO"))
 
         code += `\tif (String(_items).euqals(String(${argument})))\n`
             + `\t{\n`
