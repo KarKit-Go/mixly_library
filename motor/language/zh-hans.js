@@ -28,5 +28,8 @@ Blockly.Init_Stop_Tip = "允许麦克纳姆轮小车停止";
 Blockly.Init_SpinClockWise = "初始化顺时针旋转";
 Blockly.Init_SpinClockWise_Tip = "允许麦克纳姆轮小车顺时针旋转";
 
+Blockly.Init_SpinAntiClockWise = "初始化逆时针旋转";
+Blockly.Init_SpinAntiClockWise_Tip = "允许麦克纳姆轮小车逆时针旋转";
+
 Blockly.Init_State_Machine = "初始化状态机";
 Blockly.Init_State_Machine_Tip = "初始化状态机";
