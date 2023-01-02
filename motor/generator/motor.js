@@ -11,7 +11,7 @@ Blockly.Arduino.Mecanum_Wheel_Init = function () {
     Blockly.Arduino.definitions_['define_LeftFrontBack'] = "#define wheelLeftFrontBack 8";
 
     Blockly.Arduino.definitions_['define_LeftRearGo'] = "#define wheelLeftRearGo 12";
-    Blockly.Arduino.definitions_['define_LeftRearBack'] = "#define wheelLeftRearGo 13";
+    Blockly.Arduino.definitions_['define_LeftRearBack'] = "#define wheelLeftRearBack 13";
 
     Blockly.Arduino.definitions_['define_RightFrontGo'] = "#define wheelRightFrontGo 10";
     Blockly.Arduino.definitions_['define_RightFrontBack'] = "#define wheelRightFrontBack 11";
@@ -21,7 +21,7 @@ Blockly.Arduino.Mecanum_Wheel_Init = function () {
 
     Blockly.Arduino.setups_['init_pwm'] = "for (uint8_t i = 0; i < 16; i++)\n"
         + "\t{\n"
-        + "\t\tpwm.setPwm(i, 0, 0)\n"
+        + "\t\tpwm.setPWM(i, 0, 0);\n"
         + "\t}"
     return '';
 }
@@ -42,7 +42,7 @@ Blockly.Arduino.Init_SoftSerial = function () {
     Blockly.Arduino.definitions_['define_softSerial'] = 'SoftwareSerial softSerial(5,6);'
     Blockly.Arduino.definitions_['int_items'] = 'String _items;';
     Blockly.Arduino.setups_['setup_softSerial'] = 'softSerial.begin(115200);\n'
-        + "\tsoftSerial.listen()";
+        + "\tsoftSerial.listen();";
     return '';
 }
 
@@ -182,11 +182,13 @@ Blockly.Arduino.Init_State_Machine = function () {
         argument = Blockly.Arduino.valueToCode(this, 'IF' + i, Blockly.Arduino.ORDER_ATOMIC);
         branch = Blockly.Arduino.statementToCode(this, 'DO' + i);
 
-        code += `\tif (String(_items).euqals(String(${argument})))\n`
+        code += `\tif (String(_items).equals(String(${argument})))\n`
             + `\t{\n`
             + `\t${branch}`
-            + `\t\t_num=0\n`
+            + `\t\t_num=0;\n`
             + `\t}\n`;
     }
+
+    code += "}";
     return code + codeAfter;
 }
