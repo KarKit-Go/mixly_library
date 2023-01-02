@@ -148,6 +148,23 @@ Blockly.Arduino.Init_SpinClockWise = function () {
     return "";
 }
 
+Blockly.Arduino.Init_SpinAntiClockWise = function () {
+    const code = "void spinAntiClockWise()\n"
+        + "{\n"
+        + "\tpwm.setPWM(wheelLeftFrontGo, 0, 0);\n"
+        + "\tpwm.setPWM(wheelLeftFrontBack, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelLeftRearGo, 0, 0);\n"
+        + "\tpwm.setPWM(wheelLeftRearBack, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelRightFrontGo, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelRightFrontBack, 0,0);\n"
+        + "\tpwm.setPWM(wheelRightRearGO, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelRightRearBack, 0, 0);\n"
+        + "}";
+    Blockly.Arduino.definitions_['define_SpinAntiClockWiseCommand'] = '#define SpinAntiClockWise "SACW"';
+    Blockly.Arduino.definitions_['define_SpinAntiClockWise'] = code;
+    return "";
+}
+
 Blockly.Arduino.Init_State_Machine = function () {
     Blockly.Arduino.definitions_['int_num'] = 'int _num = 0;';
     const time = Blockly.Arduino.valueToCode(this, 'IF0', Blockly.Arduino.ORDER_ASSIGNMENT) || 500;
