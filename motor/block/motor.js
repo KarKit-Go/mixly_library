@@ -179,10 +179,10 @@ Blockly.Blocks.Init_State_Machine = {
         //this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
         this.setColour(Blockly.Blocks.motor.HUE3);
         this.appendValueInput('IF0', Number)
-            .appendField("状态机等待时间")
+            .appendField(Blockly.FSM_Wait_Time)
             .setCheck(Number);
         this.appendStatementInput('DO0')
-            .appendField("默认指令");
+            .appendField(Blockly.Default_Command);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setMutator(new Blockly.Mutator(['Define_Command']));
@@ -241,9 +241,9 @@ Blockly.Blocks.Init_State_Machine = {
         for (var i = 1; i <= this.commandCount_; i++) {
             this.appendValueInput('IF' + i)
                 .setCheck([Boolean, Number])
-                .appendField("如果指令是");
+                .appendField(Blockly.If_Command);
             this.appendStatementInput('DO' + i)
-                .appendField("执行");
+                .appendField(Blockly.Do_State);
         }
 
         for (var i = valueConnections.length - 2; i > 0; i--) {
@@ -376,9 +376,9 @@ Blockly.Blocks.Init_State_Machine = {
         for (var i = 1; i <= this.commandCount_; i++) {
             this.appendValueInput('IF' + i)
                 .setCheck([Number, Boolean])
-                .appendField("如果指令是");
+                .appendField(Blockly.If_Command);
             this.appendStatementInput('DO' + i)
-                .appendField("执行");
+                .appendField(Blockly.Do_State);
         }
     },
 
@@ -412,7 +412,7 @@ Blockly.Blocks.Define_Command = {
     init: function () {
         this.setColour(Blockly.Blocks.loops.HUE);
         this.appendDummyInput()
-            .appendField("增加指令");
+            .appendField(Blockly.Add_Command);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.contextMenu = false;

@@ -33,3 +33,9 @@ Blockly.Init_SpinAntiClockWise_Tip = "允许麦克纳姆轮小车逆时针旋转
 
 Blockly.Init_State_Machine = "初始化状态机";
 Blockly.Init_State_Machine_Tip = "初始化状态机";
+
+Blockly.FSM_Wait_Time = "状态机等待时间(单位ms，10的倍数)";
+Blockly.Default_Command = "默认指令";
+Blockly.Add_Command = "增加命令";
+Blockly.If_Command = "如果指令是";
+Blockly.Do_State = "执行"
