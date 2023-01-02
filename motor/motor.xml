@@ -17,6 +17,8 @@
         <block type="Init_Right"></block>
         <block type="Init_Left"></block>
         <block type="Init_Stop"></block>
+        <block type="Init_SpinClockWise"></block>
+        <block type="Init_SpinAntiClockWise"></block>
         <block type="Init_State_Machine">
             <value name="IF0">
                 <shadow type="math_number">
