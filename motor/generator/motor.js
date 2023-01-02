@@ -115,7 +115,7 @@ Blockly.Arduino.Init_Left = function () {
 }
 
 Blockly.Arduino.Init_Stop = function () {
-    const code = "void left()\n"
+    const code = "void stop()\n"
         + "{\n"
         + "\tpwm.setPWM(wheelLeftFrontGo, 0, 0);\n"
         + "\tpwm.setPWM(wheelLeftFrontBack, 0, 0);\n"
@@ -128,6 +128,23 @@ Blockly.Arduino.Init_Stop = function () {
         + "}";
     Blockly.Arduino.definitions_['define_StopCommand'] = '#define STOP "STOP"';
     Blockly.Arduino.definitions_['define_Stop'] = code;
+    return "";
+}
+
+Blockly.Arduino.Init_SpinClockWise = function () {
+    const code = "void spinClockWise()\n"
+        + "{\n"
+        + "\tpwm.setPWM(wheelLeftFrontGo, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelLeftFrontBack, 0, 0);\n"
+        + "\tpwm.setPWM(wheelLeftRearGo, 0, maxSpeed);\n"
+        + "\tpwm.setPWM(wheelLeftRearBack, 0, 0);\n"
+        + "\tpwm.setPWM(wheelRightFrontGo, 0, 0);\n"
+        + "\tpwm.setPWM(wheelRightFrontBack, 0,maxSpeed);\n"
+        + "\tpwm.setPWM(wheelRightRearGO, 0, 0);\n"
+        + "\tpwm.setPWM(wheelRightRearBack, 0, maxSpeed);\n"
+        + "}";
+    Blockly.Arduino.definitions_['define_SpinClockWiseCommand'] = '#define SpinClockWise "SCW"';
+    Blockly.Arduino.definitions_['define_SpinClockWise'] = code;
     return "";
 }
 
