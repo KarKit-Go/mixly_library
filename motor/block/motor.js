@@ -153,6 +153,23 @@ Blockly.Blocks.Init_SpinClockWise = {
     }
 }
 
+Blockly.Blocks.Init_SpinAntiClockWise = {
+    init: function () {
+        this.setColour(Blockly.Blocks.motor.Fun);
+        this.appendDummyInput(Blockly.Init_SpinAntiClockWise)
+            .appendField(Blockly.Init_SpinAntiClockWise);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Init_SpinAntiClockWise_Tip);
+    },
+    getVars: function () {
+        return ['SpinAntiClockWise']
+    },
+    getProcedureDef: function () {
+        return ["spinAntiClockWise", [], false];
+    }
+}
+
 Blockly.Blocks.Init_State_Machine = {
     /**
      * Block for if/elseif/else condition.
